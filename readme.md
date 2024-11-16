@@ -19,17 +19,17 @@
 
 ### Tech:
 
+- Go
 - Docker
 - Kubernetes
 - Kafka MQ
-- Risingwave stream processing
-- PostgreSQL (psql)
+- Arroyo stream processing
+- PostgreSQL (psql via cnpg)
 - Kubectl
-
+- Skaffold
 
 ### Resources:
 
 - [Deploy RisingWave on Kubernetes(PRIMARY SETUP DIRECTIONS)](https://docs.risingwave.com/deploy/risingwave-kubernetes)
 - [Arroyo Deployment on Kubernetes](https://doc.arroyo.dev/deployment/kubernetes)
 - [RabbitMQ Kubernetes Operator Quickstart](https://www.rabbitmq.com/kubernetes/operator/quickstart-operator)
-- [Cert Manager](https://cert-manager.io/docs/installation/)
