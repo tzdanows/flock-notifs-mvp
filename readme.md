@@ -19,12 +19,14 @@
 
 ### Tech:
 
+- Go
 - Docker
 - Kubernetes
 - Kafka MQ
 - Risingwave stream processing
-- PostgreSQL (psql)
+- PostgreSQL (psql via cnpg)
 - Kubectl
+- Skaffold
 
 
 ### Resources:

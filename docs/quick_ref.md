@@ -77,3 +77,16 @@ curl -X POST http://your-api-server/like \
 - Transform/Filter/Map/Reduce the data
 
 ### 5. Persist in the PSQL database
+
+
+
+Check to see if pods are running:
+
+```bash
+   kubectl -n cert-manager get pods
+   kubectl -n risingwave-operator-system get pods
+```
+
+
+issues:
+![alt text](image-1.png)
