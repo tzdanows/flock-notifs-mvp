@@ -1,4 +1,6 @@
-# arroyo + cnpg setup
+# arroyo + cnpg + minio setup
+
+primarily following https://doc.arroyo.dev/deployment/kubernetes#example-local-configuration & https://doc.arroyo.dev/tutorial/kafka
 
 ```bash
 helm repo add cnpg https://cloudnative-pg.github.io/charts
@@ -32,7 +34,6 @@ arroyo-cluster-rw      ClusterIP   10.100.251.97    <none>
 
 lets confirm we can access the arroyo_db
 ```bash
-
 $ kubectl exec -it pg-client -- bash
 
 $ psql -h arroyo-cluster-rw.default.svc.cluster.local -U arroyo_user -d arroyo_db
@@ -40,14 +41,18 @@ $ psql -h arroyo-cluster-rw.default.svc.cluster.local -U arroyo_user -d arroyo_d
 ```
 ![alt text](image-2.png)
 
-if you encounter issues, alter the password using
+if you encounter password authentication issues like myself, alter the password using:
 ```bash
 $ kubectl exec -it arroyo-cluster-1 -- psql -U postgres
 
-$postgres=# ALTER USER arroyo_user WITH PASSWORD '<your password>';
+$postgres=# ALTER USER arroyo_user WITH PASSWORD '<your intended password>';
 ```
 
-### values.yaml file to configure checkpointUrl field(s3 or minIO necessary) TODO
+## values.yaml file to configure checkpointUrl field (s3 or minIO necessary) 
+
+- TODO - configure values.yaml with minio contents
+
+### S3:
 ```yaml
    checkpointUrl: "s3://your-bucket/checkpoints" # Replace with your actual checkpoint URL
 
@@ -68,7 +73,7 @@ $postgres=# ALTER USER arroyo_user WITH PASSWORD '<your password>';
    # Other configurations as needed
 ```
 
-### OR MINIO
+### MINIO:
 ```yaml
 # values.yaml
 
@@ -99,9 +104,10 @@ postgresql:
     helm install arroyo arroyo/arroyo -f values.yaml
     kubectl get pods
 ```
-Based on the default values provided by the helm show values command, it looks like you need to specify a checkpointUrl for the Arroyo Helm chart. This is likely a URL where Arroyo can store its checkpoints, which are essential for maintaining state in stream processing applications.
+Note:
+- Based on the default values provided by the helm show values command, it looks like you need to specify a checkpointUrl for the Arroyo Helm chart. This is likely a URL where Arroyo can store its checkpoints, which are essential for maintaining state in stream processing applications.
 
-### Arroyo Deployment
+## Arroyo Deployment
 ```bash
 # apply the arroyo.yaml file
 $ kubectl apply -f arroyo.yaml
@@ -113,3 +119,4 @@ $ kubectl get pods
 $ kubectl logs <arroyo-pod-name>
 ```
 
+TODO: verify we can deploy postgres & minio/s3
