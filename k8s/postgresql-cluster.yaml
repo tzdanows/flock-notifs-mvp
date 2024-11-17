@@ -1,0 +1,26 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: arroyo-cluster
+  namespace: default
+spec:
+  instances: 3
+  storage:
+    size: 10Gi
+  primaryUpdateStrategy: unsupervised
+  bootstrap:
+    initdb:
+      database: arroyo_db
+      owner: arroyo_user
+      secret:
+        name: arroyo-secret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: arroyo-secret
+  namespace: default
+type: Opaque
+data:
+  username: YXJyb3lvX3VzZXI=    # Base64 for 'arroyo_user'
+  password: YXJyb3lvcGFzc3dvcmQ= # Base64 for 'arroyopassword'

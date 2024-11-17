@@ -1,0 +1,24 @@
+# Binaries
+flock-notif-mvp
+
+# Build directories
+/build
+/bin
+
+# Dependency directories
+/vendor
+
+# Go specific
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Logs
+*.log
+
+# IDE specific
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,15 @@
+checkpointUrl: "s3://your-bucket/checkpoints"
+
+postgresql:
+  deploy: false
+  externalDatabase:
+    host: arroyo-cluster-rw.default.svc.cluster.local
+    port: 5432
+    name: arroyo_db
+    user: arroyo_user
+    password: arroyopassword
+
+s3:
+  region: "us-west-2"
+
+# Other configurations as needed

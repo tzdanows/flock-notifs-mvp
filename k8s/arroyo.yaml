@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arroyo
+  labels:
+    app: arroyo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arroyo
+  template:
+    metadata:
+      labels:
+        app: arroyo
+    spec:
+      containers:
+      - name: arroyo
+        image: arroyo:latest # Replace with the actual image name
+        env:
+          - name: DATABASE_URL
+            value: "postgresql://arroyo_user:arroyopassword@arroyo-cluster-rw.default.svc.cluster.local:5432/arroyo_db"
+        volumeMounts:
+          - name: checkpoints
+            mountPath: /tmp/arroyo-test
+        ports:
+          - containerPort: 8080 # Replace with the port Arroyo listens on
+      volumes:
+        - name: checkpoints
+          hostPath:
+            path: /tmp/arroyo-test
+            type: DirectoryOrCreate

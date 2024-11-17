@@ -28,8 +28,14 @@
 - Kubectl
 - Skaffold
 
+### Comparison:
+
+![alt text](/docs/comparison.png)
+
 ### Resources:
 
 - [Deploy RisingWave on Kubernetes(PRIMARY SETUP DIRECTIONS)](https://docs.risingwave.com/deploy/risingwave-kubernetes)
 - [Arroyo Deployment on Kubernetes](https://doc.arroyo.dev/deployment/kubernetes)
+- [Arroyo + kafka topic](https://doc.arroyo.dev/tutorial/kafka)
+- [Arroyo architecture](https://doc.arroyo.dev/architecture)
 - [RabbitMQ Kubernetes Operator Quickstart](https://www.rabbitmq.com/kubernetes/operator/quickstart-operator)
