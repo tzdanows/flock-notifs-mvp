@@ -11,5 +11,3 @@ postgresql:
 
 s3:
   region: "us-west-2"
-
-# Other configurations as needed

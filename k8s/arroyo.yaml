@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: arroyo
-        image: arroyo:latest # Replace with the actual image name
+        image: erdiko/docker-compose:latest
         env:
           - name: DATABASE_URL
             value: "postgresql://arroyo_user:arroyopassword@arroyo-cluster-rw.default.svc.cluster.local:5432/arroyo_db"

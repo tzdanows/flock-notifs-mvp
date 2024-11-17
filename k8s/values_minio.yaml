@@ -1,0 +1,22 @@
+# values.yaml
+
+checkpointUrl: "http://minio.default.svc.cluster.local:9000/checkpoints" # Replace with your MinIO service URL
+
+# MinIO configuration
+s3:
+  region: "" # MinIO doesn't require a region, so this can be left empty
+  accessKey: "minioadmin" # Replace with your MinIO access key
+  secretKey: "minioadmin" # Replace with your MinIO secret key
+  endpoint: "http://minio.default.svc.cluster.local:9000" # MinIO service URL
+  bucket: "checkpoints" # The bucket name in MinIO
+
+postgresql:
+  deploy: false
+  externalDatabase:
+    host: arroyo-cluster-rw.default.svc.cluster.local
+    port: 5432
+    name: arroyo_db
+    user: arroyo_user
+    password: arroyopassword
+
+# Other configurations as needed

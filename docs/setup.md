@@ -2,10 +2,7 @@
 
 ![alt text](image-1.png)
 
-requirements:
-- helm
-- docker
-- kubernetes
+primarily following https://doc.arroyo.dev/deployment/kubernetes#example-local-configuration & https://doc.arroyo.dev/tutorial/kafka
 
 ```bash
 # add the arroyo helm repo to your helm installation
@@ -144,7 +141,6 @@ existingConfigMap: ""
 ```
 
 setup for local cluster without S3
-
 ```yaml
 artifactUrl: "/tmp/arroyo-test"
 checkpointUrl: "/tmp/arroyo-test"
@@ -180,3 +176,5 @@ open "http://$(kubectl get service/arroyo -o jsonpath='{.spec.clusterIP}')"
 # can proxy the service to local machine with:
 kubectl port-forward service/arroyo 5115:80
 ```
+
+TODO: verify we can deploy postgres & minio/s3
